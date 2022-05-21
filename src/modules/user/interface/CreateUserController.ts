@@ -17,33 +17,29 @@ class CreateUserController {
   }
 
   async handle(request: Request, response: Response): Promise<Response> {
-    const {
-      name,
-      cpf,
-      email,
-      phone,
-      knowledges,
-    } = request.body;
-
-    const user = new UserDTO({
-      name,
-      cpf,
-      email,
-      phone,
-      knowledges,
-    });
-
-    await user.validate();
-
-    await this.createUserUseCase.execute({
-      name,
-      cpf,
-      email,
-      phone,
-      knowledges, 
-    });
-
-    return response.status(201).send();
+    try {
+      const data: Params = {
+        name: request.body.name,
+        cpf: request.body.cpf,
+        email: request.body.email,
+        phone: request.body.phone,
+        knowledges: request.body.knowledges
+      } 
+  
+      const user = new UserDTO({
+        ...data
+      });
+  
+      await user.validate();
+  
+      await this.createUserUseCase.execute({
+        ...data 
+      });
+  
+      return response.status(201).send();
+    } catch (error) {
+      return response.status(400).send(error);
+    }
   }
 }
 

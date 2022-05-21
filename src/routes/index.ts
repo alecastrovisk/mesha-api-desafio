@@ -11,4 +11,7 @@ router.post('/register', async (req: Request, res: Response) =>
   await userController.create(req, res)
 );
 
+router.get('/register', async(req: Request, res: Response) =>
+  await userController.list(req, res)
+)
 export { router };

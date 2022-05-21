@@ -1,19 +1,27 @@
 import express, { Request, Response } from 'express';
 
 import CreateUserUseCase  from '../../applications/createUserUseCase/CreateUserUseCase';
+import ListUserUseCase from '../../applications/listUserUseCase/ListUserUseCase';
 import { Params, UserDTO } from '../../domain/UserDTO';
 
-interface ContructorParams {
+interface CreateUserContructorParams {
   createUserUseCase: CreateUserUseCase;
+}
+
+interface ListUserConstructorParams {
+  listUserUseCase: ListUserUseCase;
 }
 
 class UserController {
   private createUserUseCase: CreateUserUseCase;
+  private listUserUseCase: ListUserUseCase;
 
   constructor(
-    { createUserUseCase }: ContructorParams
+    { createUserUseCase }: CreateUserContructorParams,
+    { listUserUseCase }: ListUserConstructorParams
   ) {
     this.createUserUseCase = createUserUseCase;
+    this.listUserUseCase = listUserUseCase;
   }
 
   async create(request: Request, response: Response): Promise<Response> {
@@ -41,8 +49,16 @@ class UserController {
       return response.status(400).send(error);
     }
   }
-
   
+  async list(request: Request, response: Response): Promise<Response> {
+    try {
+      const users = await this.listUserUseCase.execute();
+      return response.status(200).send({ users })
+
+    } catch (error) {
+      return response.status(400).send(error);
+    }
+  }
 }
 
 export { UserController };

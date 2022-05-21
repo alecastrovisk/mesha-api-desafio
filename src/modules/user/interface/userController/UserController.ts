@@ -1,13 +1,13 @@
 import express, { Request, Response } from 'express';
 
-import CreateUserUseCase  from '../applications/createUserUseCase/CreateUserUseCase';
-import { Params, UserDTO } from '../domain/UserDTO';
+import CreateUserUseCase  from '../../applications/createUserUseCase/CreateUserUseCase';
+import { Params, UserDTO } from '../../domain/UserDTO';
 
 interface ContructorParams {
   createUserUseCase: CreateUserUseCase;
 }
 
-class CreateUserController {
+class UserController {
   private createUserUseCase: CreateUserUseCase;
 
   constructor(
@@ -16,7 +16,7 @@ class CreateUserController {
     this.createUserUseCase = createUserUseCase;
   }
 
-  async handle(request: Request, response: Response): Promise<Response> {
+  async create(request: Request, response: Response): Promise<Response> {
     try {
       const data: Params = {
         name: request.body.name,
@@ -41,6 +41,8 @@ class CreateUserController {
       return response.status(400).send(error);
     }
   }
+
+  
 }
 
-export { CreateUserController };
+export { UserController };

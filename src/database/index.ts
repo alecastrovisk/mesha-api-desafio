@@ -16,23 +16,23 @@ export const AppDataSource = new DataSource({
 })
 
 AppDataSource.initialize().then(async () => {
-    await AppDataSource.createQueryBuilder()
-                        .insert()
-                        .into("users")
-                        .values([
-                            {
-                                id: uuidV4() ,
-                                name : "admin",
-                                email: "admin@admin.com",
-                                cpf:"000.000.000-00",
-                                phone: "(00) 00000-0000",
-                                created_at: new Date(), 
-                                is_valid: true,
-                                is_admin: true,
-                                knowledges: ["admin", "react"]
-                            }
-                        ])
-                        .execute();
+    // await AppDataSource.createQueryBuilder()
+    //                     .insert()
+    //                     .into("users")
+    //                     .values([
+    //                         {
+    //                             id: uuidV4() ,
+    //                             name : "admin",
+    //                             email: "admin@admin.com",
+    //                             cpf:"000.000.000-00",
+    //                             phone: "(00) 00000-0000",
+    //                             created_at: new Date(), 
+    //                             is_valid: true,
+    //                             is_admin: true,
+    //                             knowledges: ["admin", "react"]
+    //                         }
+    //                     ])
+    //                     .execute();
     console.log("Initializing the database...")
 }).catch((err)=> console.log(err))
 

@@ -3,7 +3,7 @@ import { Params } from './UserDTO';
 
 interface IUsersRepository {
   create(data: Params): Promise<void>;
-  validate(user: User): Promise<void>;
+  validate(id: string): Promise<void>;
   list(): Promise<User[]>;
 }
 

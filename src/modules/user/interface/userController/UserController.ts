@@ -2,6 +2,8 @@ import express, { Request, Response } from 'express';
 
 import CreateUserUseCase  from '../../applications/createUserUseCase/CreateUserUseCase';
 import ListUserUseCase from '../../applications/listUserUseCase/ListUserUseCase';
+import ValidateUserUseCase from '../../applications/validateUserUserCase/ValidateUserUseCase';
+
 import { Params, UserDTO } from '../../domain/UserDTO';
 
 interface CreateUserContructorParams {
@@ -12,16 +14,23 @@ interface ListUserConstructorParams {
   listUserUseCase: ListUserUseCase;
 }
 
+interface ValidateUserConstructorParams {
+  validateUserUseCase: ValidateUserUseCase
+}
+
 class UserController {
   private createUserUseCase: CreateUserUseCase;
   private listUserUseCase: ListUserUseCase;
+  private validateUserUseCase: ValidateUserUseCase;
 
   constructor(
     { createUserUseCase }: CreateUserContructorParams,
-    { listUserUseCase }: ListUserConstructorParams
+    { listUserUseCase }: ListUserConstructorParams,
+    { validateUserUseCase }: ValidateUserConstructorParams,
   ) {
     this.createUserUseCase = createUserUseCase;
     this.listUserUseCase = listUserUseCase;
+    this.validateUserUseCase = validateUserUseCase;
   }
 
   async create(request: Request, response: Response): Promise<Response> {
@@ -57,6 +66,17 @@ class UserController {
 
     } catch (error) {
       return response.status(400).send(error);
+    }
+  }
+
+  async validate(request: Request, response: Response): Promise<Response>{
+    try {
+      const { id } = request.params;
+      this.validateUserUseCase.execute(id);
+
+      return response.status(200).send();
+    } catch (error) {
+      return response.status(404).send(error);
     }
   }
 }

@@ -1,5 +1,5 @@
 import { UserRepository } from "../user/infra/UserRepository";
-import { CreateUserController } from "../user/interface/CreateUserController";
+import { UserController } from "../user/interface/userController/UserController";
 import CreateUserUseCase from "../user/applications/createUserUseCase/CreateUserUseCase";
 
 const container = () => {
@@ -7,9 +7,9 @@ const container = () => {
 
   const createUserUseCase = new CreateUserUseCase({ userRepository });
 
-  const createUserController = new CreateUserController({ createUserUseCase });
+  const userController = new UserController({ createUserUseCase });
 
-  return { createUserController };
+  return { userController };
 
 }
 

@@ -1,2 +1,2 @@
-# mesha-api-desafio
-Desafio técnico mesha
+# node-api-mesha
+API para avaliação técnica da Mesha

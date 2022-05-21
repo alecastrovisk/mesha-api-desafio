@@ -13,8 +13,8 @@ class ValidateUserUseCase {
     this.userRepository = userRepository;
   }
 
-  async execute( userId: string){
-    this.userRepository.validate(userId);
+  async execute( userId: string, validation: boolean){
+    this.userRepository.validate(userId, validation);
     
   }
 }

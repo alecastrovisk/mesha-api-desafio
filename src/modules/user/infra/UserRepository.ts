@@ -34,12 +34,12 @@ class UserRepository implements IUsersRepository {
     await this.repository.save(user);
   }
 
-  async validate(id: string): Promise<void> {
+  async validate(id: string, validation: boolean): Promise<void> {
     const foundUser = await this.repository.findOneBy({ id });
     if(foundUser){
       await this.repository.save({
         id: foundUser.id,
-        is_valid: true
+        is_valid: validation
       });
     }
   }

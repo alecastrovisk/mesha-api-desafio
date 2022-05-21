@@ -72,7 +72,9 @@ class UserController {
   async validate(request: Request, response: Response): Promise<Response>{
     try {
       const { id } = request.params;
-      this.validateUserUseCase.execute(id);
+      const { validation } = request.body;
+
+      this.validateUserUseCase.execute(id, validation);
 
       return response.status(200).send();
     } catch (error) {

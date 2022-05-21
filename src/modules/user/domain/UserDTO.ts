@@ -1,6 +1,8 @@
 import { IsCPF } from 'brazilian-class-validator';
 
 import {
+  ArrayMaxSize,
+  ArrayMinSize,
   IsArray,
   IsEmail,
   IsMobilePhone,
@@ -32,6 +34,8 @@ class UserDTO {
   phone: string;
 
   @IsArray()
+  @ArrayMinSize(1)
+  @ArrayMaxSize(3)
   knowledges: string;
 
   constructor ({

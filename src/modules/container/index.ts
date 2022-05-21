@@ -2,8 +2,6 @@ import { UserRepository } from "../user/infra/UserRepository";
 import { CreateUserController } from "../user/interface/CreateUserController";
 import CreateUserUseCase from "../user/applications/createUserUseCase/CreateUserUseCase";
 
-
-
 const container = () => {
   const userRepository = new UserRepository()
 

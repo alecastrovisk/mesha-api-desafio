@@ -13,5 +13,10 @@ router.post('/register', async (req: Request, res: Response) =>
 
 router.get('/register', async(req: Request, res: Response) =>
   await userController.list(req, res)
-)
+);
+
+router.put('/:id/validate', async(req: Request, res: Response) => 
+  await userController.validate(req, res)
+);
+
 export { router };

@@ -39,7 +39,8 @@ class UserRepository implements IUsersRepository {
     if(foundUser){
       await this.repository.save({
         id: foundUser.id,
-        is_valid: validation
+        is_valid: validation,
+        updated_at: new Date()
       });
     }
   }

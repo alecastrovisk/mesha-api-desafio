@@ -1,0 +1,215 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Mesha API",
+    "description": "Api desenvolvida para o desafio técnico da Mesha",
+    "version": "1.0.0"
+  },
+  "host": "api.example.com",
+  "basePath": "/v1",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/register": { 
+      "post": {
+        "tags": [
+          "Register"
+        ],
+        "summary": "Cria um registro de usuário", 
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name":{
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "cpf": {
+                    "type": "string"
+                  },
+                  "phone": {
+                    "type": "string"
+                  },
+                  "knowledges": {
+                    "type": "Array"
+                  }
+                },
+                "example": {
+                  "name": "Alexandre Castro",
+                  "email": "alexandre.acrsf@gmail.com",
+                  "cpf": "201.289.560-38",
+                  "phone": "(82) 99334-9661",
+                  "knowledges": ["react native", "Node.js"]
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "type": "object",
+                "properties": {
+                  "message": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "message": "Created"
+                }
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      },
+      "get": {
+        "tags": ["Register"],
+        "summary": "Lista todos os usuários cadastros",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string"
+                      },
+			                "cpf": {
+                        "type": "string"
+                      },
+                      "phone": {
+                        "type": "string"
+                      },
+                      "created_at": {
+                        "type": "string"
+                      },
+                      "updated_at": {
+                        "type": "string"
+                      },
+                      "deleted_at": {
+                        "type": "string"
+                      },
+                      "is_valid": {
+                        "type": "boolean"
+                      },
+                      "is_admin": {
+                        "type": "boolean"
+                      },
+                      "knowledges": {
+                        "type": "array"
+                      }
+                    },
+                    "example": {
+                      "users": [
+                      {
+                        "id": "b97d66d9-a9f6-4276-9616-c9aff9e68aaf",
+                        "name": "Alexandre Castro",
+                        "email": "hiniya4072@hbehs.com",
+                        "cpf": "913.675.240-16",
+                        "phone": "(82) 99334-9661",
+                        "created_at": "2022-05-22T00:35:42.607Z",
+                        "updated_at": null,
+                        "deleted_at": null,
+                        "is_valid": false,
+                        "is_admin": false,
+                        "knowledges": [
+                          "react native"
+                        ]
+                      },
+                      {
+                        "id": "918f7459-2ddb-49c3-bf75-2eaeda44b5ac",
+                        "name": "Leo Henrique",
+                        "email": "jedapax896@hbehs.com",
+                        "cpf": "442.409.350-67",
+                        "phone": "(82) 99334-9661",
+                        "created_at": "2022-05-22T00:35:43.641Z",
+                        "updated_at": null,
+                        "deleted_at": null,
+                        "is_valid": false,
+                        "is_admin": false,
+                        "knowledges": [
+                          "react native",
+                          "Node.js"
+                        ]
+                      }
+                      ]
+                    }
+                    
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/:id/validate":{
+      "put": {
+      "tags": [
+        "Validate"
+      ],
+      "summary": "Valida o usuário", 
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "validation":{
+                  "type": "boolean"
+                }
+              },
+              "example": {
+                "validation": false
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                }
+              },
+              "example": {
+                "message": "Validated."
+              }
+            }
+          }
+        }
+      },
+      "produces": [
+        "application/json"
+      ]
+    }
+    }
+  }
+}

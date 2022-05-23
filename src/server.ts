@@ -2,12 +2,16 @@ import express, { Request, Response } from 'express';
 import swaggerUi from 'swagger-ui-express';
 import swaggerFile from '../swagger.json';
 
+import cors from 'cors'; 
+
 import { router } from "../src/routes/index";
 
 import './database';
 
+//Configuração do servidor
 const app = express();
 
+app.use(cors());
 app.use(router);
 
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));

@@ -4,6 +4,7 @@ import CreateUserUseCase from "../user/applications/createUserUseCase/CreateUser
 import ListUserUseCase from "../user/applications/listUserUseCase/ListUserUseCase";
 import ValidateUserUseCase from "../user/applications/validateUserUserCase/ValidateUserUseCase";
 
+//Container do usuário para injeção de dependência
 const container = () => {
   const userRepository = new UserRepository()
 

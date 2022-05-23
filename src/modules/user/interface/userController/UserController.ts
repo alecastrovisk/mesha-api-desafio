@@ -22,7 +22,7 @@ class UserController {
   private createUserUseCase: CreateUserUseCase;
   private listUserUseCase: ListUserUseCase;
   private validateUserUseCase: ValidateUserUseCase;
-
+  //Injeta os use cases
   constructor(
     { createUserUseCase }: CreateUserContructorParams,
     { listUserUseCase }: ListUserConstructorParams,
@@ -62,7 +62,7 @@ class UserController {
   async list(request: Request, response: Response): Promise<Response> {
     try {
       const users = await this.listUserUseCase.execute();
-      return response.status(200).send({ users })
+      return response.status(200).send(users);
 
     } catch (error) {
       return response.status(400).send(error);
@@ -75,7 +75,6 @@ class UserController {
       const { validation } = request.body;
 
       this.validateUserUseCase.execute(id, validation);
-
       return response.status(200).send({ message: 'Validated.'});
     } catch (error) {
       return response.status(404).send(error);

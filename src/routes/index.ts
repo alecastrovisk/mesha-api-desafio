@@ -5,7 +5,9 @@ const router = Router();
 
 router.use(express.json());
 
-const { userController } = container();
+const { userController } = container(); 
+
+//Rotas da Aplicação
 
 router.post('/register', async (req: Request, res: Response) => 
   await userController.create(req, res)

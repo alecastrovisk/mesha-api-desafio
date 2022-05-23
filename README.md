@@ -15,6 +15,17 @@ Criando uma API com node.js para o avaliação técnica.
   Para iniciar a API, rode o comando ```yarn dev``` e depois rode o comando das migrations ```yarn migration:run```
 # Acessando a documentação
 Com o ambiente instalado, você pode acessar a documentação com as rotas da API indo no seu navegador em **http://localhost:3333/docs** 
+
+# Tecnologias
+Abaixo estão listadas as tecnologias utilizadas neste projeto e os links para as suas respectivas documentações:
+* [Express](https://reactnavigation.org/docs/getting-started](https://devdocs.io/express/)
+* [Node.JS](https://nodejs.org/en/docs/)
+* [TypeORM](https://typeorm.io/%20docs)
+* [TypeScript](https://www.typescriptlang.org/docs)
+* [Swagger](https://swagger.io/docs/) 
+* [Postgres](https://www.postgresql.org/docs/)
+* [class-validator](https://github.com/typestack/class-validator)
+
 # Autor
  <div align="center"> 
     <p><b > Alexandre Castro </b></p>

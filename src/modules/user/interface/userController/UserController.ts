@@ -53,7 +53,7 @@ class UserController {
         ...data 
       });
   
-      return response.status(201).send();
+      return response.status(201).send({ message: 'Created.'});
     } catch (error) {
       return response.status(400).send(error);
     }
@@ -76,7 +76,7 @@ class UserController {
 
       this.validateUserUseCase.execute(id, validation);
 
-      return response.status(200).send();
+      return response.status(200).send({ message: 'Validated.'});
     } catch (error) {
       return response.status(404).send(error);
     }
